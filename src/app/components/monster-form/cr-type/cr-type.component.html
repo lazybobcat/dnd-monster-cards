@@ -1,0 +1,8 @@
+<mat-form-field>
+    <mat-label>Indice de dangerosité</mat-label>
+    <mat-select [(ngModel)]="monster.CR">
+        <mat-option *ngFor="let cr of options" [value]="cr.value">
+            {{ cr.name }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>

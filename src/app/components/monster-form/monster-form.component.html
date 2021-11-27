@@ -1,0 +1,245 @@
+<form #monsterForm="ngForm">
+    <mat-card class="mat-card">
+        <mat-card-title>Fiche de créature</mat-card-title>
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Informations">
+                    <ng-container *ngTemplateOutlet="informationForm"></ng-container>
+                </mat-tab>
+                <mat-tab label="Compétences et maitrises">
+                    <ng-container *ngTemplateOutlet="secondaryForm"></ng-container>
+                </mat-tab>
+                <mat-tab label="Capacités et actions">
+                    <ng-container *ngTemplateOutlet="actionsForm"></ng-container>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+<!--        <mat-card-actions class="mat-card-actions">-->
+<!--            <button mat-button>Basic</button>-->
+<!--            <button mat-button color="primary">Primary</button>-->
+<!--        </mat-card-actions>-->
+    </mat-card>
+</form>
+
+
+<ng-template #informationForm>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Informations générales</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <app-cr-type [monster]="monster"></app-cr-type>
+                </div>
+                <div class="col-8">
+                    <mat-form-field>
+                        <mat-label>Nom</mat-label>
+                        <input matInput name="monster.name" type="text" [(ngModel)]="monster.name">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Type</mat-label>
+                        <input matInput name="monster.type" type="text" [(ngModel)]="monster.type">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <app-size-type [monster]="monster"></app-size-type>
+                </div>
+                <div class="col-4">
+                    <app-alignment-type [monster]="monster"></app-alignment-type>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Statistiques</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Classe d'Armure</mat-label>
+                        <input matInput name="monster.ac" type="number" [(ngModel)]="monster.ac">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Points de vie <strong>MAX</strong></mat-label>
+                        <input matInput name="monster.hpmax" type="number" [(ngModel)]="monster.HPMax">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Points de vie <strong>BASE</strong></mat-label>
+                        <input matInput name="monster.hpbase" type="number" [(ngModel)]="monster.HPBase">
+                    </mat-form-field>
+                </div>
+            </div>
+            <app-abilities-type [abilities]="monster.abilities"></app-abilities-type>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Vitesse</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>Vitesse (en m)</mat-label>
+                        <input matInput name="monster.speed.running" type="text" [(ngModel)]="monster.speed.running">
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>Vitesse d'escalade</mat-label>
+                        <input matInput name="monster.speed.climbing" type="text" [(ngModel)]="monster.speed.climbing">
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>Vitesse de nage</mat-label>
+                        <input matInput name="monster.speed.swimming" type="text" [(ngModel)]="monster.speed.swimming">
+                    </mat-form-field>
+                </div>
+                <div class="col-3">
+                    <mat-form-field>
+                        <mat-label>Vitesse de vol</mat-label>
+                        <input matInput name="monster.speed.flying" type="text" [(ngModel)]="monster.speed.flying">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Divers</h3>
+                    <mat-form-field>
+                        <mat-label>Image de fond (URL)</mat-label>
+                        <input matInput name="monster.imageURL" type="text" [(ngModel)]="monster.imageUrl" placeholder="https://...">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+<ng-template #secondaryForm>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row col-12">
+                <h3>Jets de sauvegarde maitrisés</h3>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.strength">{{ abilityFormatter.format(abilitiesEnum.STRENGTH) }}</mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.dexterity">{{ abilityFormatter.format(abilitiesEnum.DEXTERITY) }}</mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.constitution">{{ abilityFormatter.format(abilitiesEnum.CONSTITUTION) }}</mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.intelligence">{{ abilityFormatter.format(abilitiesEnum.INTELLIGENCE) }}</mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.wisdom">{{ abilityFormatter.format(abilitiesEnum.WISDOM) }}</mat-checkbox>
+                </div>
+                <div class="col-2">
+                    <mat-checkbox [(ngModel)]="monster.savingThrows.charisma">{{ abilityFormatter.format(abilitiesEnum.CHARISMA) }}</mat-checkbox>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <h3>Compétences</h3>
+                    <app-skills-type [monster]="monster"></app-skills-type>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <h3>Sens</h3>
+                    <app-senses-type [monster]="monster"></app-senses-type>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-xl-6">
+                    <h3>Vulnérabilités</h3>
+                    <app-vulnerabilities-type [monster]="monster"></app-vulnerabilities-type>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <h3>Résistances</h3>
+                    <app-resistances-type [monster]="monster"></app-resistances-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Immunités</h3>
+                    <app-immunities-type [monster]="monster"></app-immunities-type>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>
+
+<ng-template #actionsForm>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Capacités</h3>
+                    <app-action-text-type [subset]="monster.traits" name="traits"></app-action-text-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Actions</h3>
+                    <app-action-text-type [subset]="monster.actions" name="actions"></app-action-text-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Réactions</h3>
+                    <app-action-text-type [subset]="monster.reactions" name="reactions"></app-action-text-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Actions limitées</h3>
+                    <app-action-text-type [subset]="monster.limitedActions" name="limitedActions"></app-action-text-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Actions légendaires</h3>
+                    <app-action-text-type [subset]="monster.legendaryActions" name="legendaryActions"></app-action-text-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Équipement</h3>
+                    <app-action-text-type [subset]="monster.gear" name="gear"></app-action-text-type>
+                </div>
+            </div>
+        </div>
+    </section>
+</ng-template>

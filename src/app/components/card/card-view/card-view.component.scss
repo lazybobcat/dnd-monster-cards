@@ -1,0 +1,439 @@
+@import "variables";
+
+.monster-card {
+    display: flex;
+}
+
+.card {
+    box-sizing: border-box;
+    border: 1px solid $base-color;
+    padding: 3mm;
+    color: $base-color;
+    font-size: 9pt;
+    display: flex;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-size: contain;
+    background-position: bottom;
+
+    &.bg-cover {
+        background-size: cover;
+    }
+
+    .card-size-poker & {
+        width: $card-size-poker-width;
+        height: $card-size-poker-height;
+        font-size: 7pt;
+    }
+
+    .card-size-A5 & {
+        width: $card-size-a5-width;
+        height: $card-size-a5-height;
+    }
+
+    .card-rounded & {
+        border-radius: $border-radius;
+    }
+
+    .card-with-entities & {
+        border-right: 0;
+    }
+
+    .card-with-entities.card-rounded & {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .bg-primary & {
+        background: lighten($primary-color, 5%);
+    }
+}
+
+.card-inner {
+    width: calc(100% - 3mm);
+    height: calc(100% - 3mm);
+    padding: 1mm;
+    border: 1px dashed #d26161;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    .card-rounded & {
+        border-radius: 3mm;
+    }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    margin-bottom: 1mm;
+
+    .card-header-info {
+        padding-right: 2mm;
+
+        .card-title {
+            margin-bottom: 0;
+            padding: 0;
+            font-family: $title-font;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            .card-size-poker & {
+                font-size: 1.5em;
+                letter-spacing: 0;
+            }
+        }
+
+        span {
+            font-style: italic;
+        }
+    }
+
+    .card-header-values {
+        display: flex;
+    }
+
+    .card-banner {
+        width: 12mm;
+        padding: 6mm 3mm 3mm;
+        background: $base-color;
+        border-radius: 0 0 3mm 3mm;
+        color: #efefef;
+        font-size: 1.4em;
+        margin-top: -5mm;
+        text-align: center;
+
+        .card-size-poker & {
+            width: 8mm;
+            font-size: 1.2em;
+            padding: 6mm 2mm 1mm;
+            margin-top: -4mm;
+        }
+
+        &.card-hp {
+            width: 15mm;
+
+            .card-size-poker & {
+                width: 10mm;
+            }
+        }
+
+        .card-banner-title {
+            display: block;
+            font-family: $title-font;
+
+            .card-size-poker & {
+                line-height: 1;
+            }
+        }
+
+        .card-banner-value {
+            display: block;
+            font-weight: bold;
+            padding: 2mm 0 0 0;
+
+            .card-size-poker & {
+                padding: 0;
+            }
+        }
+    }
+
+    .card-hp {
+        margin-left: 2mm;
+        background: $primary-color;
+    }
+
+    .card-alignment {
+        .card-size-poker & {
+            display: none;
+        }
+    }
+}
+
+.card-body {
+    flex-grow: 1;
+    overflow: hidden;
+
+    .card-stats {
+        margin-bottom: 2mm;
+
+        table {
+            width: 100%;
+
+            .card-size-poker & {
+                border-spacing: 0;
+                border-collapse: collapse;
+            }
+
+            thead th {
+                text-align: center;
+                font-family: $title-font;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $primary-color;
+                line-height: 1;
+            }
+
+            tbody td {
+                text-align: center;
+                font-weight: 700;
+                font-size: 1.4em;
+                line-height: 1;
+
+                .card-size-poker & {
+                    font-size: 1.1em;
+                }
+            }
+        }
+
+        .card-size-poker & {
+            margin-bottom: 1mm;
+        }
+    }
+
+    .card-passive-skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-direction: row;
+        margin-bottom: 2mm;
+        line-height: 1.2;
+
+        .card-size-poker & {
+            font-size: 0.9em;
+            line-height: 1;
+        }
+
+        .passive-skill {
+            flex-basis: 50%;
+            margin-bottom: 1mm;
+
+            .name {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .card-skills {
+        margin: 4mm 0 1mm;
+
+        .card-size-poker & {
+            margin-top: 2mm;
+        }
+
+        h2 {
+            font-family: $title-font;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            color: $primary-color;
+            margin-bottom: 0;
+            line-height: 1.2;
+
+            .card-size-poker & {
+                font-size: 1.1em;
+                line-height: 1.5;
+            }
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 2mm;
+            line-height: 1.4;
+            white-space: pre-wrap;
+
+            .card-size-poker & {
+                line-height: 1;
+                margin-bottom: 1mm;
+            }
+
+            span {
+                font-weight: 700;
+
+                &:after {
+                    content: ".";
+                }
+            }
+        }
+    }
+}
+
+.card-footer {
+    border-top: 1px solid $base-color;
+    padding: 2mm 2mm 0;
+    display: flex;
+    justify-content: space-between;
+
+    .card-footer-item {
+        font-size: 1.2em;
+
+        .card-size-poker & {
+            font-size: 0.9em;
+            line-height: 1;
+        }
+
+        span {
+            font-family: $title-font;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .card-size-poker &.hp {
+            display: none;
+        }
+    }
+
+    .card-size-poker & {
+        padding: 1mm 1mm 0;
+    }
+}
+
+.entities-section {
+    box-sizing: border-box;
+    border: 1px solid $base-color;
+    padding: 3mm 3mm 3mm 0;
+    color: $base-color;
+    font-size: 10pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    counter-reset: entities;
+
+    .card-size-poker & {
+        width: 24mm;
+        height: $card-size-poker-height;
+        font-size: 9pt;
+    }
+
+    .card-size-A5 & {
+        width: 80mm;
+        height: $card-size-a5-height;
+    }
+
+    .card-rounded & {
+        border-radius: $border-radius;
+    }
+
+    .card-with-entities & {
+        border-left: 0;
+    }
+
+    .card-with-entities.card-rounded & {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}
+
+.entity {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .bubbles {
+        z-index: 50;
+        margin-top: 5mm;
+    }
+
+    .entity-id {
+        text-align: center;
+        width: 5mm;
+        height: 5mm;
+        border-radius: 50%;
+        border: 1px solid $primary-color;
+        background: $primary-color;
+        color: #fff;
+
+        &:after {
+            counter-increment: entities;
+            content: counter(entities, upper-alpha);
+        }
+    }
+
+    .entity-check {
+        width: 5mm;
+        height: 5mm;
+        border-radius: 50%;
+        border: 1px solid $primary-color;
+        background: #ffffff;
+    }
+
+    .entity-hp {
+        width: 15mm;
+        height: 20mm;
+        border: 2px solid $primary-color;
+        padding: 1mm;
+        border-radius: 0 0 3mm 3mm;
+        text-align: center;
+        margin-left: -3mm;
+
+        span {
+            color: $primary-color;
+            border-bottom: 1px solid $primary-color;
+        }
+    }
+
+    .entity-notes {
+        flex-grow: 1;
+        align-self: self-start;
+        height: 18mm;
+        border: 1px solid $base-color;
+        border-left: 0;
+        padding: 1mm;
+        text-align: center;
+
+        span {
+            color: $base-color;
+            border-bottom: 1px solid $base-color;
+        }
+
+        .card-size-poker & {
+            display: none;
+        }
+    }
+
+    .entity-hp, .entity-notes {
+        span {
+            display: block;
+            font-family: $title-font;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+    }
+
+    .card-size-poker & {
+        &.entity-4, &.entity-5, &.entity-6, &.entity-7 {
+            display: none;
+        }
+    }
+
+    .card-rounded &:first-child {
+        .entity-notes {
+            border-top-right-radius: $border-radius;
+        }
+    }
+
+    .card-rounded &:last-child {
+        .entity-notes {
+            border-bottom-right-radius: $border-radius;
+        }
+    }
+}
+
+@media print {
+    .card {
+        display: block;
+    }
+
+    .card-size-A5 {
+        //transform: rotate(90deg) translateX(2px) translateY(0px);
+    }
+
+    .card-inner {
+        border: none;
+    }
+}

@@ -1,0 +1,16 @@
+@import "variables";
+
+.row {
+    padding-top: 15px;
+
+    &:nth-child(even) {
+        background: lighten($primary-color, 45%);
+    }
+}
+
+.action-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}

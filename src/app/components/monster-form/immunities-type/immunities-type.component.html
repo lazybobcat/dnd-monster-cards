@@ -1,0 +1,21 @@
+<div class="row" *ngFor="let immunity of monster.immunities; let i = index">
+    <div class="col-4">
+        <mat-form-field>
+            <mat-label>Type/État</mat-label>
+            <input matInput name="monster.immunity.type-{{ i }}" type="text" [(ngModel)]="immunity.type">
+        </mat-form-field>
+    </div>
+    <div class="col-6">
+        <mat-checkbox [(ngModel)]="immunity.fromNonMagicalAttacks" name="monster.immunity.nma-{{ i }}" class="multiline-label">
+            Infligé par des attaques <strong>non-magiques</strong>
+        </mat-checkbox>
+    </div>
+    <div class="col-2 action-column">
+        <button mat-mini-fab color="warn" aria-label="Retirer cette compétence" (click)="removeImmunity(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter une compétence" (click)="addImmunity()">
+    <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,23 @@
+@import "variables";
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.sidebar-container {
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.drawer-container {
+    min-height: calc(100vh - 64px);
+}
+
+@media print {
+    mat-toolbar {
+        display: none;
+    }
+}

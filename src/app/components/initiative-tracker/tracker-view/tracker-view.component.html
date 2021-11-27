@@ -1,0 +1,52 @@
+<div class="initiative-tracker printable" *ngIf="monster">
+    <div class="tracker-verso">
+        <div class="tracker-verso-image" *ngIf="displayImage && monster.imageUrl?.length">
+            <img src="{{ monster.imageUrl }}" alt=""/>
+        </div>
+        <h1 class="tracker-verso-title">{{ monster.name }}</h1>
+    </div>
+    <div class="tracker-recto">
+        <h1 class="tracker-recto-title">{{ monster.name }}</h1>
+        <div class="tracker-recto-banners">
+            <div class="banner-ac">{{ monster.ac }}</div>
+            <div class="banner-hp">{{ monster.HPMax }}</div>
+        </div>
+        <div class="tracker-recto-stats">
+            <table>
+                <thead>
+                <tr>
+                    <th>For {{ monster.abilities.strength }}</th>
+                    <th>Dex {{ monster.abilities.dexterity }}</th>
+                    <th>Con {{ monster.abilities.constitution }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.strength) }}</td>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.dexterity) }}</td>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.constitution) }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <table>
+                <thead>
+                <tr>
+                    <th>Int {{ monster.abilities.intelligence }}</th>
+                    <th>Sag {{ monster.abilities.wisdom }}</th>
+                    <th>Cha {{ monster.abilities.charisma }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.intelligence) }}</td>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.wisdom) }}</td>
+                    <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.charisma) }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tracker-recto-initiative">
+            <span>Initiative</span>
+        </div>
+    </div>
+</div>

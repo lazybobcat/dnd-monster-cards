@@ -1,0 +1,154 @@
+@import "variables";
+
+.initiative-tracker {
+    box-sizing: border-box;
+    border: 1px solid $base-color;
+    padding: 3mm;
+    color: $base-color;
+    font-size: 10pt;
+    display: flex;
+    flex-direction: column;
+
+    width: $tracker-size-width;
+    max-width: $tracker-size-width;
+    height: $tracker-size-height;
+    max-height: $tracker-size-height;
+
+    overflow: hidden;
+}
+
+.tracker-verso {
+    box-sizing: border-box;
+    width: 100%;
+    height: $tracker-size-fold-height;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid $base-color;
+    padding-top: 5mm;
+    transform: rotate(180deg);
+    justify-content: flex-end;
+
+    .tracker-verso-title {
+        width: 100%;
+        font-family: $title-font;
+        font-size: 1.4em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .tracker-verso-image {
+        width: 100%;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.tracker-recto {
+    width: 100%;
+    height: calc(#{$tracker-size-height} - #{$tracker-size-fold-height} - 15mm);
+    margin-top: 5mm;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    justify-content: space-between;
+
+    .tracker-recto-title {
+        width: 100%;
+        font-family: $title-font;
+        font-size: 1.4em;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .tracker-recto-banners {
+        display: flex;
+        justify-content: space-between;
+
+        .banner-ac, .banner-hp {
+            height: 10mm;
+            width: 15mm;
+            padding: 3mm;
+            color: #efefef;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .banner-ac {
+            border-radius: 0 3mm 3mm 0;
+            background: $base-color;
+            margin-left: -3mm;
+            padding-left: 6mm;
+            text-align: center;
+        }
+
+        .banner-hp {
+            border-radius: 3mm 0 0 3mm;
+            background: $primary-color;
+            margin-right: -3mm;
+            padding-right: 6mm;
+            text-align: center;
+        }
+    }
+
+    .tracker-recto-stats {
+        margin-bottom: 2mm;
+
+        table {
+            width: 100%;
+            margin-bottom: 3mm;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            thead th {
+                text-align: center;
+                font-family: $title-font;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $primary-color;
+                line-height: 1;
+            }
+
+            tbody td {
+                text-align: center;
+                font-weight: 700;
+                font-size: 1.4em;
+                line-height: 1;
+            }
+        }
+    }
+
+    .tracker-recto-initiative {
+        width: 25mm;
+        height: 28mm;
+        border: 2px solid $primary-color;
+        padding: 1mm;
+        border-radius: 0 0 3mm 3mm;
+        text-align: center;
+        align-self: center;
+
+        span {
+            display: block;
+            font-family: $title-font;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $primary-color;
+            border-bottom: 1px solid $primary-color;
+        }
+    }
+}
+
+@media print {
+    .initiative-tracker {
+        display: block;
+        //transform: rotate(90deg) translateX(-50%) translateY(-50%);
+    }
+}

@@ -1,0 +1,9 @@
+@import "variables";
+
+.row {
+    padding-top: 15px;
+
+    &:nth-child(even) {
+        background: lighten($primary-color, 45%);
+    }
+}

@@ -1,0 +1,172 @@
+<div
+    class="monster-card printable card-size-{{ format }}"
+    [ngClass]="{'card-with-entities': displayEntities, 'card-rounded': rounded}"
+    *ngIf="monster"
+>
+    <div class="card" [style.background-image]="backgroundImage()" [ngClass]="{'bg-cover': backgroundCover}">
+        <div class="card-inner">
+            <div class="card-header">
+                <div class="card-header-info">
+                    <h1 class="card-title">{{ monster.name }}</h1>
+                    <span class="card-alignment">
+                        <span *ngIf="monster.type?.length">{{ monster.type }},</span>
+                        taille {{ sizeFormatter.format(monster.size) }}
+                        - {{ alignmentFormatter.format(monster.alignment) }}
+                    </span>
+                </div>
+                <div class="card-header-values">
+                    <div class="card-banner card-ac">
+                        <span class="card-banner-title">CA</span>
+                        <span class="card-banner-value">{{ monster.ac }}</span>
+                    </div>
+                    <div class="card-banner card-hp">
+                        <span class="card-banner-title">PV</span>
+                        <span class="card-banner-value">{{ monster.HPMax }}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-stats">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>For {{ monster.abilities.strength }}</th>
+                            <th>Dex {{ monster.abilities.dexterity }}</th>
+                            <th>Con {{ monster.abilities.constitution }}</th>
+                            <th>Int {{ monster.abilities.intelligence }}</th>
+                            <th>Sag {{ monster.abilities.wisdom }}</th>
+                            <th>Cha {{ monster.abilities.charisma }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.strength) }}</td>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.dexterity) }}</td>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.constitution) }}</td>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.intelligence) }}</td>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.wisdom) }}</td>
+                            <td>{{ bonusCalculator.getBonusFromStatAsString(monster.abilities.charisma) }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-passive-skills">
+                    <div class="passive-skill" *ngIf="monster.savingThrows?.length()">
+                        <span class="name">Sauv.</span>
+                        <span *ngFor="let score of savingsCalculator.getSavingThrows(monster); let last = last">
+                            {{ abilityFormatter.formatShort(score.ability) }} +{{ score.score }}<ng-container *ngIf="!last">, </ng-container>
+                        </span>
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.vulnerabilities.length">
+                        <span class="name">Vuln.</span> {{ monster.vulnerabilities.join(', ') }}
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.resistances.length">
+                        <span class="name">Resist.</span> {{ monster.resistances.join(', ') }}
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.immunities.length">
+                        <span class="name">Immu.</span>
+                        <span *ngFor="let immunity of monster.getMagicalImmunities(); let last = last">
+                            {{ immunity.type }}<ng-container *ngIf="!last">, </ng-container>
+                        </span>
+
+                        <ng-container *ngIf="monster.getMagicalImmunities().length && monster.getNonMagicalImmunities().length">
+                            <strong> et</strong>
+                        </ng-container>
+                        <ng-container *ngIf="monster.getNonMagicalImmunities().length">
+                            <span *ngFor="let immunity of monster.getNonMagicalImmunities(); let last = last">
+                                {{ immunity.type }}<ng-container *ngIf="!last">, </ng-container>
+                            </span>
+                            infligés par des attaques non-magiques
+                        </ng-container>
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.skills.length">
+                        <span class="name">Comp.</span>
+                        <span *ngFor="let skill of monster.skills; let last = last">
+                            {{ skill.name }} {{ skill.modifierAsString() }}<ng-container *ngIf="!last">, </ng-container>
+                        </span>
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.languages.length">
+                        <span class="name">Lang.</span> {{ monster.languages.join(', ') }}
+                    </div>
+                    <div class="passive-skill" *ngIf="monster.senses.length">
+                        <span class="name">Sens</span> {{ monster.senses.join(', ') }}
+                    </div>
+                </div>
+
+                <ng-container *ngIf="monster.traits.length">
+                    <div class="card-skills">
+                        <h2>Capacités</h2>
+                        <p *ngFor="let skill of monster.traits">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monster.actions.length">
+                    <div class="card-skills">
+                        <h2>Actions</h2>
+                        <p *ngFor="let skill of monster.actions">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monster.legendaryActions.length">
+                    <div class="card-skills">
+                        <h2>Actions légendaires</h2>
+                        <p *ngFor="let skill of monster.legendaryActions">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monster.reactions.length">
+                    <div class="card-skills">
+                        <h2>Réactions</h2>
+                        <p *ngFor="let skill of monster.reactions">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monster.limitedActions.length">
+                    <div class="card-skills">
+                        <h2>Actions limitées</h2>
+                        <p *ngFor="let skill of monster.limitedActions">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+                <ng-container *ngIf="monster.gear.length">
+                    <div class="card-skills">
+                        <h2>Équipement</h2>
+                        <p *ngFor="let skill of monster.gear">
+                            <span>{{skill.title}}</span> {{ skill.description }}
+                        </p>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="card-footer">
+                <div class="card-footer-item">
+                    <span>Vit.</span> {{ monster.speed.running }}m
+                    <ng-container *ngIf="monster.speed.climbing">, escalade {{ monster.speed.climbing }}m</ng-container>
+                    <ng-container *ngIf="monster.speed.swimming">, nage {{ monster.speed.swimming }}m</ng-container>
+                    <ng-container *ngIf="monster.speed.flying">, vol {{ monster.speed.flying }}m</ng-container>
+                </div>
+                <div class="card-footer-item">
+                    <span>PV</span> {{ monster.nbDie }}{{ dieCalculator.getDiceType(monster.size) }}+{{ monster.HPBase }}
+                </div>
+                <div class="card-footer-item">
+                    <span>ID</span>
+                    {{ crFormatter.format(monster.CR) }} (XP : {{ pxCalculator.getPXFromCR(monster.CR) | number }})
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="entities-section" *ngIf="displayEntities">
+        <div class="entity entity-{{ index + 1 }}" *ngFor="let i of [1,2,3,4,5,6,7]; let index = index">
+            <div class="bubbles">
+                <div class="entity-id"></div>
+                <div class="entity-check"></div>
+            </div>
+            <div class="entity-hp"><span>PV</span></div>
+            <div class="entity-notes"><span>Notes</span></div>
+        </div>
+    </div>
+</div>

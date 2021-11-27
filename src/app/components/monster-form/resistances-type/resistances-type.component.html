@@ -1,0 +1,16 @@
+<div class="row" *ngFor="let resistance of monster.resistances; let i = index">
+    <div class="col-10">
+        <mat-form-field>
+            <mat-label>Résistance</mat-label>
+            <input matInput name="monster.resistances.{{ i }}" type="text" value="{{ resistance }}" (change)="editResistance(i, $event)">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button mat-mini-fab color="warn" aria-label="Retirer cette résistance" (click)="removeResistance(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter une résistance" (click)="addResistance()">
+    <mat-icon>add</mat-icon>
+</button>

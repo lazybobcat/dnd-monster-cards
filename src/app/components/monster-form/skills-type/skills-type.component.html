@@ -1,0 +1,22 @@
+<div class="row" *ngFor="let skill of monster.skills; let i = index">
+    <div class="col-6">
+        <mat-form-field>
+            <mat-label>Compétence</mat-label>
+            <input matInput name="monster.skill.name-{{ i }}" type="text" [(ngModel)]="skill.name">
+        </mat-form-field>
+    </div>
+    <div class="col-4">
+        <mat-form-field>
+            <mat-label>Modificateur</mat-label>
+            <input matInput name="monster.skill.mod-{{ i }}" type="number" [(ngModel)]="skill.modifier">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button mat-mini-fab color="warn" aria-label="Retirer cette compétence" (click)="removeSkill(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter une compétence" (click)="addSkill()">
+    <mat-icon>add</mat-icon>
+</button>

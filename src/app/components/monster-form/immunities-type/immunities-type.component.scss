@@ -1,0 +1,13 @@
+@import "variables";
+
+.row {
+    padding-top: 15px;
+
+    &:nth-child(even) {
+        background: lighten($primary-color, 45%);
+    }
+}
+
+.action-column {
+    text-align: right;
+}

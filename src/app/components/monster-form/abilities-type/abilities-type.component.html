@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.STRENGTH) }}</mat-label>
+            <input matInput name="abilities.str" type="number" min="0" max="30" [(ngModel)]="abilities.strength">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.DEXTERITY) }}</mat-label>
+            <input matInput name="abilities.dex" type="number" min="0" max="30" [(ngModel)]="abilities.dexterity">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.CONSTITUTION) }}</mat-label>
+            <input matInput name="abilities.con" type="number" min="0" max="30" [(ngModel)]="abilities.constitution">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.INTELLIGENCE) }}</mat-label>
+            <input matInput name="abilities.int" type="number" min="0" max="30" [(ngModel)]="abilities.intelligence">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.WISDOM) }}</mat-label>
+            <input matInput name="abilities.wis" type="number" min="0" max="30" [(ngModel)]="abilities.wisdom">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <mat-form-field>
+            <mat-label>{{ abilityFormatter.format(enum.CHARISMA) }}</mat-label>
+            <input matInput name="abilities.cha" type="number" min="0" max="30" [(ngModel)]="abilities.charisma">
+        </mat-form-field>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row" *ngFor="let vulnerability of monster.vulnerabilities; let i = index">
+    <div class="col-10">
+        <mat-form-field>
+            <mat-label>Vulnérabilité</mat-label>
+            <input matInput name="monster.vulnerability.{{ i }}" type="text" value="{{ vulnerability }}" (change)="editVulnerability(i, $event)">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button mat-mini-fab color="warn" aria-label="Retirer cette vulnérabilité" (click)="removeVulnerability(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter une vulnérabilité" (click)="addVulnerability()">
+    <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,25 @@
+<div class="row" *ngFor="let paragraph of subset; let i = index">
+    <div class="col-10">
+        <mat-form-field>
+            <mat-label>Titre</mat-label>
+            <input matInput name="monster.paragraph.{{ name }}.{{ i }}.title" type="text" [(ngModel)]="paragraph.title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea
+                matInput
+                cdkTextareaAutosize
+                name="monster.paragraph.{{ name }}.{{ i }}.description" type="text"
+                [(ngModel)]="paragraph.description"
+            ></textarea>
+        </mat-form-field>
+    </div>
+    <div class="col-2 action-column">
+        <button mat-mini-fab color="warn" aria-label="Retirer" (click)="removeParagraph(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter" (click)="addParagraph()">
+    <mat-icon>add</mat-icon>
+</button>

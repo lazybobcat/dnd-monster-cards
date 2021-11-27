@@ -1,0 +1,53 @@
+<div class="container-fluid" *ngIf="monster">
+    <div class="row">
+        <div class="col-12 col-xl-5 dont-print">
+            <button mat-icon-button color="warn" aria-label="Enregistrer" (click)="saveMonster()" *ngIf="!monster.id">
+                <mat-icon>save</mat-icon>
+            </button>
+            <button mat-icon-button color="primary" aria-label="Ajouter un nouveau monstre" (click)="newMonster()">
+                <mat-icon>add</mat-icon>
+            </button>
+            <app-monster-form [monster]="monster"></app-monster-form>
+        </div>
+        <div class="col-12 col-xl-7">
+            <div class="row">
+                <div class="col-12">
+                    <div class="preview">
+                        <app-card-view
+                            [monster]="monster"
+                            [format]="'A5'"
+                            [displayImage]="displayImageOnCard"
+                            [backgroundCover]="coverImageOnCard"
+                            [displayEntities]="displayEntitiesOnCard"
+                            [rounded]="roundedCard"
+                        ></app-card-view>
+                        <app-tracker-view [monster]="monster" [displayImage]="displayImageOnTracker"></app-tracker-view>
+                    </div>
+                </div>
+            </div>
+            <div class="row dont-print">
+                <div class="col-4">
+                    <div>
+                        <mat-checkbox [(ngModel)]="displayImageOnCard">Fond de carte</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox [(ngModel)]="coverImageOnCard">Couvrir le fond avec l'image</mat-checkbox>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div>
+                        <mat-checkbox [(ngModel)]="displayEntitiesOnCard">Encarts d'entités</mat-checkbox>
+                    </div>
+                    <div>
+                        <mat-checkbox [(ngModel)]="roundedCard">Coins arrondis</mat-checkbox>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div>
+                        <mat-checkbox [(ngModel)]="displayImageOnTracker">Image sur le tracker d'initiative</mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
