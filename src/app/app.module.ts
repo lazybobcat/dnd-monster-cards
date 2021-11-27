@@ -32,6 +32,8 @@ import { ImmunitiesTypeComponent } from './components/monster-form/immunities-ty
 import { ActionTextTypeComponent } from './components/monster-form/action-text-type/action-text-type.component';
 import { GeneratorComponent } from './components/generator/generator.component';
 import { LibraryComponent } from './components/library/library.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { LanguageTypeComponent } from './components/monster-form/language-type/language-type.component';
 
 @NgModule({
     declarations: [
@@ -50,7 +52,8 @@ import { LibraryComponent } from './components/library/library.component';
         ImmunitiesTypeComponent,
         ActionTextTypeComponent,
         GeneratorComponent,
-        LibraryComponent
+        LibraryComponent,
+        LanguageTypeComponent
     ],
     imports: [
         CommonModule,
@@ -62,6 +65,7 @@ import { LibraryComponent } from './components/library/library.component';
         MatToolbarModule,
         MatSidenavModule,
         MatListModule,
+        MatGridListModule,
         MatCardModule,
         MatIconModule,
         MatButtonModule,

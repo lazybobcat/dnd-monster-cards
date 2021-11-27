@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { JsonConvert } from 'json2typescript';
+import { BehaviorSubject } from 'rxjs';
 import * as uuid from 'uuid';
 import { Monster } from 'src/app/models/monster';
-import { BehaviorSubject } from 'rxjs';
 
 export const STORAGE_KEY_LIBRARY: string = 'monsters_library';
 
@@ -32,8 +32,16 @@ export class MonsterLibraryService {
         return this.update(monster);
     }
 
-    public find(id: string): Monster | undefined {
+    public findById(id: string): Monster | undefined {
         return this.library.find(value => id === value.id);
+    }
+
+    public findByName(name: string): Monster[] {
+        return this.library.filter(value => value.name.includes(name));
+    }
+
+    public sort(): void {
+        this.library.sort((a, b) => a.name < b.name ? -1 : 1);
     }
 
     public flush(): void {
@@ -56,6 +64,7 @@ export class MonsterLibraryService {
     }
 
     private saveLibrary(): boolean {
+        this.sort();
         const json = this.jsonConvert.serialize(this.library);
 
         try {
@@ -81,7 +90,7 @@ export class MonsterLibraryService {
     }
 
     private update(monster: Monster): boolean {
-        if (this.find(monster.id)) {
+        if (this.findById(monster.id)) {
             this.library = this.library.map(value => (value.id === monster.id) ? monster : value);
         } else {
             return this.insert(monster);

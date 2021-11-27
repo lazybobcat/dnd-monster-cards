@@ -1,0 +1,16 @@
+<div class="row" *ngFor="let language of monster.languages; let i = index">
+    <div class="col-10">
+        <mat-form-field>
+            <mat-label>Langue</mat-label>
+            <input matInput name="monster.language.{{ i }}" type="text" value="{{ language }}" (change)="editLanguage(i, $event)">
+        </mat-form-field>
+    </div>
+    <div class="col-2">
+        <button mat-mini-fab color="warn" aria-label="Retirer cette vulnérabilité" (click)="removeLanguage(i)">
+            <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+</div>
+<button mat-mini-fab color="primary" aria-label="Ajouter une vulnérabilité" (click)="addLanguage()">
+    <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,19 @@
+@import "variables";
+
+mat-grid-tile {
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-size: contain;
+    //background-size: cover;
+    background-position: bottom;
+}
+
+mat-grid-tile-footer {
+    justify-content: center;
+
+    span {
+        font-family: $title-font;
+        font-weight: 700;
+        font-size: 1.2em;
+    }
+}

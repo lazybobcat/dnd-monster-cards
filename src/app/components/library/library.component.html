@@ -1,11 +1,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <mat-list>
-                <mat-list-item *ngFor="let monster of library">
-                    <a [routerLink]="['/', 'generator', monster.id]">{{ monster.name }}</a>
-                </mat-list-item>
-            </mat-list>
+            <mat-grid-list cols="6" rowHeight="1:1">
+                <a *ngFor="let monster of library" [routerLink]="['/', 'generator', monster.id]">
+                    <mat-grid-tile [style.background-image]="'url(' + monster.imageUrl + ')'">
+                        <mat-grid-tile-footer>
+                            <span>{{ monster.name }}</span>
+                        </mat-grid-tile-footer>
+                    </mat-grid-tile>
+                </a>
+            </mat-grid-list>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Monster } from 'src/app/models/monster';
 import { MonsterAbilityFormatterService } from 'src/app/services/monster-ability-formatter.service';
 import { AbilitiesEnum } from 'src/app/models/profile/abilities.enum';
+import { DieCalculatorService } from 'src/app/services/die-calculator.service';
 
 @Component({
     selector: 'app-monster-form',
@@ -13,6 +14,9 @@ export class MonsterFormComponent {
     @Input() monster: Monster = new Monster();
     public abilitiesEnum = AbilitiesEnum;
 
-    constructor(public abilityFormatter: MonsterAbilityFormatterService) {}
+    constructor(
+        public abilityFormatter: MonsterAbilityFormatterService,
+        public dieCalculator: DieCalculatorService,
+    ) {}
 
 }

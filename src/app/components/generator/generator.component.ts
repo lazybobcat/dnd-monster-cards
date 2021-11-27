@@ -28,7 +28,7 @@ export class GeneratorComponent implements OnInit{
     public ngOnInit(): void {
         let id = this.route.snapshot.paramMap.get('id');
         if (id) {
-            const monster = this.monsterLibrary.find(id);
+            const monster = this.monsterLibrary.findById(id);
             if (monster) {
                 this.monster = monster;
             }

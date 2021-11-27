@@ -65,22 +65,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-6 col-xl-3">
                     <mat-form-field>
-                        <mat-label>Classe d'Armure</mat-label>
-                        <input matInput name="monster.ac" type="number" [(ngModel)]="monster.ac">
-                    </mat-form-field>
-                </div>
-                <div class="col-4">
-                    <mat-form-field>
-                        <mat-label>Points de vie <strong>MAX</strong></mat-label>
+                        <mat-label>Points de vie</mat-label>
                         <input matInput name="monster.hpmax" type="number" [(ngModel)]="monster.HPMax">
                     </mat-form-field>
                 </div>
-                <div class="col-4">
+                <div class="col-6 col-xl-3">
                     <mat-form-field>
-                        <mat-label>Points de vie <strong>BASE</strong></mat-label>
+                        <mat-label>Nbre de dés de vie</mat-label>
+                        <input matInput name="monster.nbDie" type="number" [(ngModel)]="monster.nbDie">
+                        <span matSuffix>{{ dieCalculator.getDiceType(monster.size) }}</span>
+                    </mat-form-field>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <mat-form-field>
+                        <mat-label>+ Points de vie <strong>BASE</strong></mat-label>
+                        <span matPrefix>+&nbsp;</span>
                         <input matInput name="monster.hpbase" type="number" [(ngModel)]="monster.HPBase">
+                    </mat-form-field>
+                </div>
+                <div class="col-6 col-xl-3">
+                    <mat-form-field>
+                        <mat-label>Classe d'Armure</mat-label>
+                        <input matInput name="monster.ac" type="number" [(ngModel)]="monster.ac">
                     </mat-form-field>
                 </div>
             </div>
@@ -98,25 +106,25 @@
                 <div class="col-3">
                     <mat-form-field>
                         <mat-label>Vitesse (en m)</mat-label>
-                        <input matInput name="monster.speed.running" type="text" [(ngModel)]="monster.speed.running">
+                        <input matInput name="monster.speed.running" type="number" [(ngModel)]="monster.speed.running">
                     </mat-form-field>
                 </div>
                 <div class="col-3">
                     <mat-form-field>
                         <mat-label>Vitesse d'escalade</mat-label>
-                        <input matInput name="monster.speed.climbing" type="text" [(ngModel)]="monster.speed.climbing">
+                        <input matInput name="monster.speed.climbing" type="number" [(ngModel)]="monster.speed.climbing">
                     </mat-form-field>
                 </div>
                 <div class="col-3">
                     <mat-form-field>
                         <mat-label>Vitesse de nage</mat-label>
-                        <input matInput name="monster.speed.swimming" type="text" [(ngModel)]="monster.speed.swimming">
+                        <input matInput name="monster.speed.swimming" type="number" [(ngModel)]="monster.speed.swimming">
                     </mat-form-field>
                 </div>
                 <div class="col-3">
                     <mat-form-field>
                         <mat-label>Vitesse de vol</mat-label>
-                        <input matInput name="monster.speed.flying" type="text" [(ngModel)]="monster.speed.flying">
+                        <input matInput name="monster.speed.flying" type="number" [(ngModel)]="monster.speed.flying">
                     </mat-form-field>
                 </div>
             </div>
@@ -195,6 +203,12 @@
                 <div class="col-12">
                     <h3>Immunités</h3>
                     <app-immunities-type [monster]="monster"></app-immunities-type>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h3>Langues</h3>
+                    <app-language-type [monster]="monster"></app-language-type>
                 </div>
             </div>
         </div>

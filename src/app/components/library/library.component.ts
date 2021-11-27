@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { MonsterLibraryService } from 'src/app/services/monster-library.service';
 import { Monster } from 'src/app/models/monster';
-import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-library',
@@ -16,6 +16,7 @@ export class LibraryComponent implements OnInit, OnDestroy {
     constructor(
         private monsterLibrary: MonsterLibraryService
     ) {
+        this.monsterLibrary.sort();
     }
 
     ngOnInit(): void {

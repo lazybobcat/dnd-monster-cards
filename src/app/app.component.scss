@@ -20,4 +20,13 @@
     mat-toolbar {
         display: none;
     }
+
+    .sidebar {
+        width: 0;
+        display: none;
+    }
+
+    mat-drawer-content {
+        margin-left: 0!important;
+    }
 }

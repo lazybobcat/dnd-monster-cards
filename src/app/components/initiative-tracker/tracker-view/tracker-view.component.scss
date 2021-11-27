@@ -41,9 +41,11 @@
 
     .tracker-verso-image {
         width: 100%;
+        text-align: center;
 
         img {
             max-width: 100%;
+            max-height: calc(#{$tracker-size-fold-height} - 64px);
         }
     }
 }
