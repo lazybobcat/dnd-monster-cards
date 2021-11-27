@@ -15,6 +15,10 @@
                     </span>
                 </div>
                 <div class="card-header-values">
+                    <div class="card-banner card-spellDC" *ngIf="monster.spellAbility && monster.spellDC">
+                        <span class="card-banner-title">DD</span>
+                        <span class="card-banner-value">{{ monster.spellDC }}</span>
+                    </div>
                     <div class="card-banner card-ac">
                         <span class="card-banner-title">CA</span>
                         <span class="card-banner-value">{{ monster.ac }}</span>

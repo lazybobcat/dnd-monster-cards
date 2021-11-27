@@ -16,6 +16,7 @@ export class CrTypeComponent {
     @Input() monster: Monster = new Monster();
 
     public options: CROption[] = [
+        {name: '0', value: 0},
         {name: '1/8', value: 1/8},
         {name: '1/4', value: 1/4},
         {name: '1/2', value: 1/2},

@@ -134,6 +134,43 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <h3>Incantation</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Caractéristique</mat-label>
+                        <mat-select [(ngModel)]="monster.spellAbility" (valueChange)="spellAbilityChanged($event)">
+                            <mat-option [value]="undefined">-- Aucune --</mat-option>
+                            <mat-option
+                                *ngFor="let option of [abilitiesEnum.INTELLIGENCE, abilitiesEnum.WISDOM, abilitiesEnum.CHARISMA, abilitiesEnum.STRENGTH, abilitiesEnum.DEXTERITY, abilitiesEnum.CONSTITUTION]"
+                                [value]="option"
+                            >
+                                {{ abilityFormatter.format(option) }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>DD Jet de sauv.</mat-label>
+                        <input matInput name="monster.spellDC" type="number" [(ngModel)]="monster.spellDC">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field>
+                        <mat-label>Toucher</mat-label>
+                        <input matInput name="monster.spellHit" type="number" [(ngModel)]="monster.spellHit">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="form-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
                     <h3>Divers</h3>
                     <mat-form-field>
                         <mat-label>Image de fond (URL)</mat-label>

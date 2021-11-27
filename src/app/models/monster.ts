@@ -7,6 +7,7 @@ import { Skill } from "./profile/skill";
 import { DamageImmunity } from "./profile/resistances";
 import { MonsterText } from "./profile/monster-text";
 import { JsonObject, JsonProperty } from 'json2typescript';
+import { AbilitiesEnum } from 'src/app/models/profile/abilities.enum';
 
 @JsonObject("Monster")
 export class Monster {
@@ -40,6 +41,13 @@ export class Monster {
     public speed: Speed = new Speed();
     @JsonProperty("abilities", AbilityScores)
     public abilities: AbilityScores = new AbilityScores([]);
+
+    @JsonProperty("spellDC", Number, true)
+    public spellDC?: number = undefined;
+    @JsonProperty("spellHit", Number, true)
+    public spellHit?: number = undefined;
+    @JsonProperty("spellHit", Number, true)
+    public spellAbility?: AbilitiesEnum = undefined;
 
     @JsonProperty("savingThrows", SavingThrows)
     public savingThrows: SavingThrows = new SavingThrows([]);

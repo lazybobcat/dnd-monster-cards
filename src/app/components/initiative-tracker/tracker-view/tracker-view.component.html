@@ -9,6 +9,7 @@
         <h1 class="tracker-recto-title">{{ monster.name }}</h1>
         <div class="tracker-recto-banners">
             <div class="banner-ac">{{ monster.ac }}</div>
+            <div class="banner-spellDC" *ngIf="monster.spellDC">{{ monster.spellDC }}</div>
             <div class="banner-hp">{{ monster.HPMax }}</div>
         </div>
         <div class="tracker-recto-stats">

@@ -73,7 +73,7 @@
         display: flex;
         justify-content: space-between;
 
-        .banner-ac, .banner-hp {
+        .banner-ac, .banner-hp, .banner-spellDC {
             height: 10mm;
             width: 15mm;
             padding: 3mm;
@@ -95,6 +95,12 @@
             background: $primary-color;
             margin-right: -3mm;
             padding-right: 6mm;
+            text-align: center;
+        }
+
+        .banner-spellDC {
+            border-radius: 3mm;
+            background: $spell-color;
             text-align: center;
         }
     }

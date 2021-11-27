@@ -115,8 +115,15 @@
             margin-top: -4mm;
         }
 
+        &.card-spellDC {
+            background: $spell-color;
+            margin-right: 2mm;
+        }
+
         &.card-hp {
             width: 15mm;
+            margin-left: 2mm;
+            background: $primary-color;
 
             .card-size-poker & {
                 width: 10mm;
@@ -141,11 +148,6 @@
                 padding: 0;
             }
         }
-    }
-
-    .card-hp {
-        margin-left: 2mm;
-        background: $primary-color;
     }
 
     .card-alignment {
