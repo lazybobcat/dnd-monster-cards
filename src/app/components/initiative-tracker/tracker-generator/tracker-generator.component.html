@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col-12 col-xl-5 form-column">
+        <form #monsterForm="ngForm">
+            <mat-card class="mat-card">
+                <mat-card-title>
+                    Créatures
+                    <button mat-mini-fab color="primary" aria-label="Ajouter une créature" (click)="addMonster()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </mat-card-title>
+                <mat-card-content>
+                    <section class="form-section" *ngFor="let monster of monsters; let i = index">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>
+                                        <button mat-mini-fab color="warn" aria-label="Retirer" (click)="removeMonster(i)">
+                                            <mat-icon>delete</mat-icon>
+                                        </button>
+                                        {{ monster.name }}
+                                    </h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <mat-label>Nom</mat-label>
+                                        <input matInput name="monster.{{ i }}.name" type="text" [(ngModel)]="monster.name">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-6">
+                                    <mat-form-field>
+                                        <mat-label>Image (URL)</mat-label>
+                                        <input matInput name="monster.{{ i }}.imageURL" type="text" [(ngModel)]="monster.imageUrl" placeholder="https://...">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <mat-form-field>
+                                        <mat-label>Points de vie</mat-label>
+                                        <input matInput name="monster.{{ i }}.hpmax" type="number" [(ngModel)]="monster.HPMax">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-4">
+                                    <mat-form-field>
+                                        <mat-label>Classe d'Armure</mat-label>
+                                        <input matInput name="monster.{{ i }}.ac" type="number" [(ngModel)]="monster.ac">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-4">
+                                    <mat-form-field>
+                                        <mat-label>DD jet de sauv.</mat-label>
+                                        <input matInput name="monster.{{ i }}.spellDC" type="number" [(ngModel)]="monster.spellDC">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <app-abilities-type [abilities]="monster.abilities"></app-abilities-type>
+                        </div>
+                    </section>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </div>
+    <div class="col-12 col-xl-7">
+        <div class="preview" *ngFor="let row of Array.from(Array(Math.floor(monsters.length / 5) + 1).keys())">
+            <app-tracker-view *ngFor="let m of monsters.slice(row * 5, row * 5 + 5)" [monster]="m" [displayImage]="true"></app-tracker-view>
+        </div>
+    </div>
+</div>

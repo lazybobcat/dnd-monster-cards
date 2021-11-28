@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GeneratorComponent } from 'src/app/components/generator/generator.component';
 import { LibraryComponent } from 'src/app/components/library/library.component';
+import { TrackerGeneratorComponent } from 'src/app/components/initiative-tracker/tracker-generator/tracker-generator.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,10 @@ const routes: Routes = [
     {
         path: 'generator',
         component: GeneratorComponent
+    },
+    {
+        path: 'trackers',
+        component: TrackerGeneratorComponent
     },
     {
         path: 'library',

@@ -34,6 +34,7 @@ import { GeneratorComponent } from './components/generator/generator.component';
 import { LibraryComponent } from './components/library/library.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { LanguageTypeComponent } from './components/monster-form/language-type/language-type.component';
+import { TrackerGeneratorComponent } from './components/initiative-tracker/tracker-generator/tracker-generator.component';
 
 @NgModule({
     declarations: [
@@ -53,7 +54,8 @@ import { LanguageTypeComponent } from './components/monster-form/language-type/l
         ActionTextTypeComponent,
         GeneratorComponent,
         LibraryComponent,
-        LanguageTypeComponent
+        LanguageTypeComponent,
+        TrackerGeneratorComponent
     ],
     imports: [
         CommonModule,

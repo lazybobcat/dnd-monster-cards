@@ -1,0 +1,32 @@
+
+button.mat-mini-fab {
+    width: 28px;
+    height: 28px;
+
+    mat-icon.mat-icon.material-icons.mat-icon-no-color {
+        vertical-align: text-bottom!important;
+        margin-top: -8px!important;
+        font-size: 20px!important;
+    }
+}
+
+.preview {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 5mm;
+    page-break-after: always;
+    break-after: always;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+
+@media print {
+    .form-column {
+        display: none;
+    }
+}

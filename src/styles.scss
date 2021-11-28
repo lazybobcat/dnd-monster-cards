@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "variables";
+
 * { box-sizing: border-box; }
 html, body { height: 100%; box-sizing: border-box; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #fff; }
@@ -26,6 +28,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background:
 
 .multiline-label label {
     white-space: normal!important;
+}
+
+.form-section {
+    padding: 15px 0;
+
+    .row {
+        margin-top: 15px;
+    }
+
+    h3 {
+        font-family: $title-font;
+        color: $primary-color;
+        border-bottom: 1px solid $primary-color;
+        margin-bottom: 0;
+    }
 }
 
 @media print {
